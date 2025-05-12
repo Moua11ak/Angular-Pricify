@@ -1,0 +1,32 @@
+<section>
+  <div class="dashboard-container">
+    <!-- Dashboard Header -->
+    <div class="dashboard-header">
+      <div class="header-content">
+        <img src="assets/dashboard-logo.png" alt="Analytics Logo" class="dashboard-logo">
+        <div class="header-text">
+          <h2>🏨 Smart Hotel Analytics</h2>
+          <p class="slogan">Data-Driven Hospitality Insights</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Power BI Dashboard Container -->
+    <div class="iframe-container">
+      <iframe
+        title="Hotels-Overview-Copy"
+        src="https://app.powerbi.com/reportEmbed?reportId=895fccc1-5d9a-4d66-8011-4993d249d991&autoAuth=true&navContentPaneEnabled=false&ctid=604f1a96-cbe8-43f8-abbf-f8eaf5d85730"
+        class="powerbi-frame">
+      </iframe>
+    </div>
+
+    <!-- AI Report Button -->
+    <div class="report-controls">
+      <button (click)="generateAIReport()" class="ai-report-button">
+        <i class="bi bi-robot"></i>
+        Generate AI Report & Send Email
+      </button>
+    </div>
+  </div>
+
+</section>

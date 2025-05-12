@@ -1,0 +1,18 @@
+section{
+  padding-top: 90px; /* Adjust this value based on your header height */
+  }
+
+.btn-primary {
+  background-color: #4CAF50;
+  border-color: #45a049;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+.btn-primary i {
+  margin-right: 5px;
+}

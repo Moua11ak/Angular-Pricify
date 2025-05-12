@@ -1,0 +1,160 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<div class="auth-container">
+  <div class="auth-sidebar">
+    <div>
+      <img Src="./assets/img/logo-no-background.png" alt="Logo" class="logo" height="250" width="1000">
+      <h2>Welcome Back!</h2>
+      <p>Access your account and manage your portfolio with our secure authentication system.</p>
+    </div>
+    <div>
+      <p>Protected by advanced encryption and multi-factor authentication.</p>
+    </div>
+  </div>
+
+  <div class="auth-main">
+    <!-- Login Form -->
+    <form class="auth-form" id="authForm" *ngIf="!isSignUpMode" (ngSubmit)="onSubmit()">
+      <div class="form-header">
+        <h1>Sign In</h1>
+        <p>Continue with your preferred method</p>
+      </div>
+
+      <div class="social-buttons">
+        <button type="button" class="social-button" (click)="socialSignIn('google')">
+          <i class="fab fa-google"></i>
+        </button>
+        <button type="button" class="social-button" (click)="socialSignIn('facebook')">
+          <i class="fab fa-facebook-f"></i>
+        </button>
+        <button type="button" class="social-button" (click)="socialSignIn('apple')">
+          <i class="fab fa-apple"></i>
+        </button>
+      </div>
+
+      <div class="divider">or</div>
+
+      <div class="form-group">
+        <i class="fas fa-envelope input-icon"></i>
+        <input type="email" class="form-control" id="email" placeholder="Email address" [(ngModel)]="loginData.email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <i class="fas fa-lock input-icon"></i>
+        <input [type]="showPassword ? 'text' : 'password'" class="form-control" id="password" placeholder="Password" [(ngModel)]="loginData.password" name="password" required (input)="checkPasswordStrength()">
+        <i class="far" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'" class="password-toggle" (click)="togglePasswordVisibility()"></i>
+        <div class="password-strength">
+          <div class="password-strength-bar" id="strengthBar" [style.width.%]="passwordStrength"></div>
+        </div>
+        <div class="strength-text" id="strengthText">{{passwordStrengthText}}</div>
+      </div>
+
+      <div class="checkbox-container">
+        <div class="custom-checkbox" [ngClass]="{'checked': rememberMe}" (click)="toggleRememberMe()">
+          <i class="fas fa-check"></i>
+        </div>
+        <label>Remember me</label>
+      </div>
+
+      <button type="submit" class="submit-btn" [disabled]="isLoading">
+        <span class="btn-text">Sign In</span>
+        <div class="loader" *ngIf="isLoading">
+          <i class="fas fa-spinner fa-spin"></i>
+        </div>
+      </button>
+
+
+      <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+      <div class="success-message" *ngIf="successMessage">{{ successMessage }}</div>
+
+      <div class="terms">
+        By continuing, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+      </div>
+
+      <div class="switch-form">
+        Don't have an account? <a href="javascript:void(0)" (click)="toggleFormMode()">Sign Up</a>
+      </div>
+    </form>
+
+    <!-- Sign Up Form -->
+    <form class="auth-form" id="signUpForm" *ngIf="isSignUpMode" (ngSubmit)="onSignUp()">
+      <div class="form-header">
+        <h1>Create Account</h1>
+        <p>Sign up to get started</p>
+      </div>
+
+      <div class="social-buttons">
+        <button type="button" class="social-button" (click)="socialSignIn('google')">
+          <i class="fab fa-google"></i>
+        </button>
+        <button type="button" class="social-button" (click)="socialSignIn('facebook')">
+          <i class="fab fa-facebook-f"></i>
+        </button>
+        <button type="button" class="social-button" (click)="socialSignIn('apple')">
+          <i class="fab fa-apple"></i>
+        </button>
+      </div>
+
+      <div class="divider">or</div>
+
+      <div class="form-group">
+        <i class="fas fa-user input-icon"></i>
+        <input type="text" class="form-control" id="username" placeholder="Username" [(ngModel)]="signUpData.username" name="username" required>
+      </div>
+
+      <div class="form-group">
+        <i class="fas fa-envelope input-icon"></i>
+        <input type="email" class="form-control" id="signUpEmail" placeholder="Email address" [(ngModel)]="signUpData.email" name="signUpEmail" required>
+      </div>
+
+      <div class="form-group">
+        <i class="fas fa-lock input-icon"></i>
+        <input [type]="showPassword ? 'text' : 'password'" class="form-control" id="signUpPassword" placeholder="Password" [(ngModel)]="signUpData.password" name="signUpPassword" required (input)="checkPasswordStrength()">
+        <i class="far" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'" class="password-toggle" (click)="togglePasswordVisibility()"></i>
+        <div class="password-strength">
+          <div class="password-strength-bar" id="signUpStrengthBar" [style.width.%]="passwordStrength"></div>
+        </div>
+        <div class="strength-text" id="signUpStrengthText">{{passwordStrengthText}}</div>
+      </div>
+
+      <div class="form-group">
+        <i class="fas fa-lock input-icon"></i>
+        <input [type]="showConfirmPassword ? 'text' : 'password'" class="form-control" id="confirmPassword" placeholder="Confirm Password" [(ngModel)]="signUpData.confirmPassword" name="confirmPassword" required>
+        <i class="far" [ngClass]="showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'" class="password-toggle" (click)="toggleConfirmPasswordVisibility()"></i>
+      </div>
+
+<!--/////////////////////////-->
+      <div class="form-group">
+        <i class="fas fa-user-tag input-icon"></i>
+        <select class="form-control" id="role" [(ngModel)]="signUpData.role" name="role" required>
+          <option value="" disabled>Select your role</option>
+          <option *ngFor="let role of availableRoles" [value]="role.id">{{ role.name }}</option>
+        </select>
+      </div>
+
+      <div class="checkbox-container">
+        <div class="custom-checkbox" [ngClass]="{'checked': agreeToTerms}" (click)="toggleAgreeToTerms()">
+          <i class="fas fa-check"></i>
+        </div>
+        <label>I agree to the Terms and Privacy Policy</label>
+      </div>
+
+      <button type="submit" class="submit-btn" [disabled]="isLoading || !agreeToTerms">
+        <span [style.opacity]="isLoading ? 0 : 1">Create Account</span>
+        <div class="loader" [style.display]="isLoading ? 'block' : 'none'">
+          <i class="fas fa-spinner fa-spin"></i>
+        </div>
+      </button>
+
+      <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+      <div class="success-message" *ngIf="successMessage">{{ successMessage }}</div>
+
+      <div class="terms">
+        By continuing, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+      </div>
+
+      <div class="switch-form">
+        Already have an account? <a href="javascript:void(0)" (click)="toggleFormMode()">Sign In</a>
+      </div>
+    </form>
+  </div>
+</div>

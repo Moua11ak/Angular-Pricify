@@ -1,0 +1,67 @@
+<div class="prediction-form">
+
+
+
+  <div class="eco-header mb-5">
+    <div class="d-flex align-items-center justify-content-between mb-3">
+      <img src="./assets/img/logo-no-background.png" alt="EcoFlight Logo" class="logo-img">
+      <div class="slogan text-end">
+        <h2 class="mb-0">🌍 EcoFlight</h2>
+        <p class="text-muted mb-0">Smart Travel, Sustainable Future</p>
+      </div>
+    </div>
+    <hr class="header-divider">
+  </div>
+  <h1> Eco Flight Analyzer</h1>
+
+  <form (ngSubmit)="onSubmit()">
+    <label>Flight Duration (minutes):</label>
+    <input type="number" [(ngModel)]="flightDuration" name="flightDuration" required>
+
+    <label>Departure Period:</label>
+    <select [(ngModel)]="departurePeriod" name="departurePeriod" required>
+      <option>Early Morning</option>
+      <option>Morning</option>
+      <option>Afternoon</option>
+      <option>Evening</option>
+    </select>
+
+    <label>Arrival Period:</label>
+    <select [(ngModel)]="arrivalPeriod" name="arrivalPeriod" required>
+      <option>Early Morning</option>
+      <option>Morning</option>
+      <option>Afternoon</option>
+      <option>Evening</option>
+    </select>
+
+    <label>Airline Company:</label>
+    <select [(ngModel)]="airlineCompany" name="airlineCompany" required>
+      <option>Lufthansa</option>
+      <option>Turkish Airlines</option>
+      <option>Air France</option>
+      <option>Tunisair</option>
+      <option>Transavia</option>
+      <option>Royal Air Maroc</option>
+      <option>Emirates</option>
+      <option>Qatar Airways</option>
+      <option>Saudia</option>
+      <option>Other</option>
+    </select>
+
+    <label>Destination:</label>
+    <select [(ngModel)]="destination" name="destination" required>
+      <option>Dubai</option>
+      <option>London</option>
+      <option>Paris</option>
+      <option>USA</option>
+    </select>
+
+    <button type="submit">Predict</button>
+  </form>
+
+  <div *ngIf="predictedPrice !== null">
+    <h2>💰 Predicted Ticket Price: {{ predictedPrice }} USD</h2>
+  </div>
+</div>
+
+

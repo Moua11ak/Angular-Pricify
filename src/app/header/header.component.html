@@ -1,0 +1,129 @@
+<header id="header" class="header d-flex align-items-center fixed-top">
+  <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+    <a href="index.html" class="logo d-flex align-items-center">
+      <!-- Fixed logo path using forward slashes -->
+      <img src="assets/img/logo-no-background.png" alt="PRICIFY Logo">
+      <!-- <h1 class="sitename">PRICIFY</h1> -->
+    </a>
+
+    <nav id="navmenu" class="navmenu">
+      <ul>
+        <li><a routerLink="/home" routerLinkActive="active">Home</a>
+        <li><a href="#about">About</a></li>
+        <li *ngIf="!currentUser"><a href="#features">Features</a></li>
+        <li *ngIf="!currentUser"><a href="#gallery">Gallery</a></li>
+        <li *ngIf="!currentUser"><a href="#team">Team</a></li>
+        <li *ngIf="!currentUser"><a href="#pricing">Pricing</a></li>
+
+        <!-- Logged in menu items -->
+        <li *ngIf="currentUser">
+          <a routerLink="/recommendation" routerLinkActive="active">Recommendation</a>
+        </li>
+
+        <li class="dropdown" *ngIf="currentUser">
+          <a href="#"><span>Predictions</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <ul>
+            <li><a routerLink="/prediction" routerLinkActive="active">Flights Prediction</a></li>
+          </ul>
+        </li>
+
+<!--        <li><a href="#contact">Contact</a></li>-->
+
+        <!-- Authentication button -->
+<!--        <li class="auth-buttons" style="margin-left: auto;" *ngIf="!currentUser">-->
+<!--          <a routerLink="/login" class="sign-up">Sign Up</a>-->
+<!--        </li>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <li *ngIf="currentUser?.role === 'customer'">
+          <a href="#features">Features</a>
+        </li>
+        <li *ngIf="currentUser?.role === 'customer'">
+          <a href="#gallery">Gallery</a>
+        </li>
+        <li *ngIf="currentUser?.role === 'customer'">
+          <a href="#team">Team</a>
+        </li>
+        <li *ngIf="currentUser?.role === 'customer'">
+          <a href="#pricing">Pricing</a>
+        </li>
+<!--        <li *ngIf="currentUser || canViewRecommendations()">-->
+<!--          <a routerLink="/recommendation" routerLinkActive="active">Recommendation</a>-->
+<!--        </li>-->
+
+        <li class="dropdown" *ngIf="canViewDashboards()">
+          <a href="#"><span>Dashboard</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <ul>
+            <li *ngIf="canViewHotelsDashboard()"><a routerLink="/powerbi" routerLinkActive="active">Hotels</a></li>
+            <li *ngIf="canViewFlightsDashboard()"><a routerLink="/powerbi1" routerLinkActive="active">Flights</a></li>
+            <li *ngIf="canViewAgenciesDashboard()"><a routerLink="/powerbi2" routerLinkActive="active">Agencies</a></li>
+            <li *ngIf="canViewProductDashboard()"><a routerLink="/powerbi3" routerLinkActive="active">Product</a></li>
+            <li *ngIf="canViewTransactionDashboard()"><a routerLink="/powerbi4" routerLinkActive="active">Transaction</a></li>
+          </ul>
+        </li>
+
+<!--        <li class="dropdown" *ngIf="currentUser || canViewPredictions()">-->
+<!--          <a href="#"><span>Predictions</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>-->
+<!--          <ul>-->
+<!--            <li><a routerLink="/prediction" routerLinkActive="active">Flights Prediction</a></li>-->
+<!--          </ul>-->
+<!--        </li>-->
+
+        <li *ngIf="canViewReports()"><a routerLink="/report" routerLinkActive="active">Reports</a></li>
+        <li><a href="#contact">Contact</a></li>
+
+        <!-- Authentication buttons -->
+        <li class="auth-buttons" style="margin-left: auto;" *ngIf="!currentUser">
+          <a routerLink="/login" class="sign-up">Sign Up</a>
+        </li>
+
+        <!-- Profile icon with dropdown when user is logged in -->
+        <li class="profile-menu" *ngIf="currentUser">
+          <div class="profile-container" (click)="toggleProfileMenu()">
+            <div class="profile-icon">
+              <i class="bi bi-person-circle"></i>
+            </div>
+          </div>
+          <ul class="profile-dropdown" [class.active]="isProfileMenuOpen">
+            <li class="user-info">
+              <div class="user-name">{{ currentUser.username }}</div>
+              <div class="user-role">{{ currentUser.role.replace('_', ' ') | titlecase }}</div>
+            </li>
+
+            <li class="dropdown-divider"></li>
+
+            <!-- Profile as parent item -->
+            <li class="dropdown-submenu">
+              <a class="dropdown-parent">
+                <i class="bi bi-person"></i>
+                My Profile
+                <i class="bi bi-chevron-right"></i>
+              </a>
+              <ul class="submenu">
+                <li><a routerLink="/settings"><i class="bi bi-gear"></i>Settings</a></li>
+                <li><a (click)="logout()"><i class="bi bi-box-arrow-right"></i>Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+    </nav>
+  </div>
+</header>

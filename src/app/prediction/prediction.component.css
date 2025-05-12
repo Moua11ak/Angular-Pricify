@@ -1,0 +1,171 @@
+.prediction-form {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #f8faff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.prediction-form h1 {
+  text-align: center;
+  color: #0d6efd;
+  margin-bottom: 30px;
+}
+
+.prediction-form label {
+  display: block;
+  margin-bottom: 8px;
+  margin-top: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+.prediction-form input,
+.prediction-form select {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  background-color: #fff;
+}
+
+.prediction-form button {
+  width: 100%;
+  margin-top: 30px;
+  padding: 12px;
+  background-color: #0d6efd;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.prediction-form button:hover {
+  background-color: #0b5ed7;
+}
+
+.prediction-form div {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.prediction-form h2 {
+  color: #198754;
+  font-size: 22px;
+}
+
+
+/* Enhanced CSS with logo/slogan styling */
+.prediction-form {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background: linear-gradient(145deg, #f8faff, #ffffff);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(13, 110, 253, 0.1);
+  border: 1px solid rgba(13, 110, 253, 0.1);
+}
+
+.eco-header {
+  padding: 1.5rem;
+  background: rgba(5, 51, 201, 0.3);
+  border-radius: 15px;
+  margin-bottom: 2rem !important;
+}
+
+.logo-img {
+  height: 60px;
+  width: auto;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.header-divider {
+  border-color: rgba(5, 51, 201, 0.3);
+  border-width: 2px;
+  margin: 1rem 0;
+}
+
+.slogan h2 {
+  color: #1ACC8D;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.prediction-form h1 {
+  text-align: center;
+  color: #1ACC8D;
+  margin-bottom: 2rem;
+  font-size: 2.2rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.prediction-form h1:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: #1ACC8D;
+  border-radius: 2px;
+}
+
+.prediction-form label {
+  font-weight: 600;
+  color: #2d4059;
+  margin-bottom: 0.5rem;
+}
+
+.prediction-form input,
+.prediction-form select {
+  border: 2px solid #dee2e6;
+  transition: all 0.3s ease;
+  padding: 0.75rem 1rem;
+}
+
+.prediction-form input:focus,
+.prediction-form select:focus {
+  border-color: #1ACC8D;
+  box-shadow: 0 0 0 3px rgba(26, 204, 141, 0.2);
+}
+
+.prediction-form button {
+  background: #1ACC8D;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.prediction-form button:hover {
+  background: #17b37d;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(26, 204, 141, 0.3);
+}
+
+/* Enhanced result display */
+.prediction-form div[ngIf] {
+  padding: 1.5rem;
+  background: rgba(26, 204, 141, 0.1);
+  border-radius: 12px;
+  border-left: 4px solid #1ACC8D;
+  margin-top: 2rem;
+}
+
+.prediction-form h2 {
+  color: #198754;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.5rem;
+}

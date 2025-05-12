@@ -1,0 +1,83 @@
+/* Style for the PRICIFY brand name */
+.pricify-brand {
+    font-style: italic;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Remove the underline and add a custom underline effect */
+/* Style for the PRICIFY brand name */
+.pricify-brand {
+    font-style: italic;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Remove the underline and add a custom underline effect */
+  .pricify-brand::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 100%;
+    height: 2px;
+    background-color: #1ACC8D; /* Teal color from your design */
+    transform: rotate(-1deg); /* Slight rotation for style */
+  }
+
+  .btn-get-started {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 50px;
+    transition: 0.5s;
+    color: #fff;
+    background: #1ACC8D;
+    text-decoration: none;
+  }
+
+  .btn-get-started:hover {
+    background: #1ACC8D;
+  }
+
+
+.btn-watch-video {
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    transition: 0.5s;
+    margin-left: 25px;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .btn-watch-video i {
+    line-height: 0;
+    color: #1ACC8D;
+    font-size: 32px;
+    margin-right: 8px;
+  }
+
+  .btn-watch-video:hover {
+    color: #1ACC8D;
+  }
+
+.btn-primary[style*="#00D8A9"] {
+  transition: all 0.3s ease;
+}
+
+.btn-primary[style*="#1ACC8D"]:hover {
+  background-color: #17b37d !important;
+  border-color: #17b37d !important;
+  transform: translateY(-2px);
+  box-shadow: 10px 15px rgba(26, 204, 141, 0.3);
+}
